@@ -1,0 +1,12 @@
+# The Plumber policy for coconux3/dagger, added by the Plumber GitHub App.
+#
+# One line, and that is the point of it: the default policy belongs to the
+# product and is not copied in here, so an improvement to it reaches this
+# repository without a second pull request. A second copy of a default policy
+# is a second policy to keep in step.
+#
+# To change what is checked, add a `github:` section below and turn a control
+# off or price it differently. The file is read by the Plumber CLI in the
+# workflow this pull request also adds, which is the only thing that scans this
+# repository.
+extends: plumber:default

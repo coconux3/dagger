@@ -42,6 +42,8 @@ jobs:
     steps:
       - name: "Check out"
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "Set up Go"
         uses: actions/setup-go@v1
@@ -54,7 +56,7 @@ jobs:
           sudo chmod +x /usr/local/bin/sops
 
       - name: "Expose GitHub Runtime"
-        uses: crazy-max/ghaction-github-runtime@v1
+        uses: crazy-max/ghaction-github-runtime@83094fe91195fdf87fa647051ab34148d96d3f1b # v1
 
       - name: Sets env vars on push to main
         run: |
@@ -77,3 +79,5 @@ jobs:
         if: ${{ failure() }}
         run: |
           docker logs dagger-buildkitd
+    permissions:
+      contents: read

@@ -32,12 +32,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "Expose GitHub Runtime"
-        uses: crazy-max/ghaction-github-runtime@v1
+        uses: crazy-max/ghaction-github-runtime@83094fe91195fdf87fa647051ab34148d96d3f1b # v1
 
       - name: "Set up dagger"
-        uses: dagger/dagger-for-github@v2
+        uses: dagger/dagger-for-github@2e6b2303a42b3d2fa9213ae561c6a01fa1206a53 # v2
         with:
           install-only: true
 
@@ -47,3 +49,5 @@ jobs:
           DAGGER_LOG_FORMAT: "plain"
         run: |
           dagger do gitpod
+    permissions:
+      contents: read
