@@ -69,7 +69,7 @@ jobs:
           # raises it, in a commit of its own, to the floor of the score it
           # measured on this branch after its repairs. Nothing lowers it, and a
           # floor you have edited yourself is left exactly as you wrote it.
-          min-points: 0
+          min-points: 52
           # Code scanning needs GitHub Advanced Security, which a private
           # repository on a free plan does not have.
           upload-sarif: false
