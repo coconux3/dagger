@@ -40,6 +40,8 @@ jobs:
     steps:
       - name: "Check out"
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "Setup Go"
         uses: actions/setup-go@v1
@@ -60,7 +62,7 @@ jobs:
           sudo chmod +x /usr/local/bin/sops
 
       - name: "Expose GitHub Runtime"
-        uses: crazy-max/ghaction-github-runtime@v1
+        uses: crazy-max/ghaction-github-runtime@83094fe91195fdf87fa647051ab34148d96d3f1b # v1
 
       - name: Start Buildkitd and Jaeger
         run: |
@@ -141,3 +143,5 @@ jobs:
         run: |
           echo "To view Jaeger traces, run the follow from a local Dagger repo:"
           echo dagger do -p ci/jaeger/jaeger.cue jaegerView --with \'actions: jaegerView: {runID: \"${GITHUB_RUN_ID}\", repository: \"${GITHUB_REPOSITORY}\", artifactName: \"jaeger_data\"}\'
+    permissions:
+      contents: read

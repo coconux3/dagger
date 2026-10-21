@@ -19,8 +19,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Cypress run
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@f5bea478b80a774068179089247f13d60abc5010 # v2
         env:
           REACT_APP_CLIENT_ID: 123
           REACT_APP_CLIENT_SECRET: 123
@@ -44,3 +46,5 @@ jobs:
         with:
           name: cypress-videos
           path: website/cypress/videos
+    permissions:
+      contents: read

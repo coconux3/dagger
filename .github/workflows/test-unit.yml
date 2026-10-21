@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: "Check out"
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "Setup Go"
         uses: actions/setup-go@v1
@@ -36,3 +38,5 @@ jobs:
         run: |
           export DAGGER_LOG_FORMAT=plain
           make test
+    permissions:
+      contents: read
